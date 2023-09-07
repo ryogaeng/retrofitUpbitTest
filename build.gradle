@@ -1,0 +1,51 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.3'
+	id 'io.spring.dependency-management' version '1.1.3'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+//	implementation 'org.springframework.boot:spring-boot-starter'
+//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//
+//	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+//	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+//
+	// 1. Retrofit 객체 생성할 때 GsonCovertFactory를 등록하기 위해
+	implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+	// 2. HTTP API를 요청해서 받아온 JSON데이터를 Java객체로 역직렬화 해주기 위함
+//	implementation 'com.google.code.gson:gson:2.8.8'
+//
+//	// 4
+//	implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+//	// 5
+//	implementation 'com.squareup.okio:okio:2.5.0'
+//	// 6. Retrofit API를 사용하기 위함
+	implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
